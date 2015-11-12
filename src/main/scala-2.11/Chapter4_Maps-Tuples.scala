@@ -1,4 +1,5 @@
-import java.io.File
+import
+java.io.File
 import scala.io.Source
 import scala.collection.JavaConversions.mapAsScalaMap
 import java.util.Calendar._
