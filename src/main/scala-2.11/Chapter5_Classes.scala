@@ -90,6 +90,7 @@ object Chapter5_Classes extends App {
       val salary: Double = defSalary
   }
 
+
   class AuxilaryConst(val name: String, var salary: Double){
     def this() = this("Barney", 300.00)
 
