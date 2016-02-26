@@ -54,7 +54,7 @@ object Chapter4_Maps_Tuples extends App {
 //    val tokens = source.mkString.split("\\s+") //Split the text file at each space OR many spaces.
 //
 //    //Following line of code is found on page 44 of Scala for Impatient. Interoperating with Java. Using TreeMap which scala doesn't provide
-//    var freq = new scala.collection.immutable.HashMap[String, Int]
+  //    var freq = new scala.collection.immutable.HashMap[String, Int]
 //    //    for each token (each word) map the word to its frequency
 //    tokens foreach { token =>
 //      freq = freq + (token -> (freq.getOrElse(token, 0) + 1) )
