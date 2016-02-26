@@ -1,7 +1,3 @@
-import
-java.io.File
-import scala.io.Source
-import scala.collection.JavaConversions.mapAsScalaMap
 import java.util.Calendar._
 
 import scala.util.Random
@@ -28,18 +24,18 @@ object Chapter4_Maps_Tuples extends App {
   /**
    * 2- SCALA Method which reads a file using Scala.IO.
    */
-  def readFileScalaIO = {
-      val source = Source.fromFile("/home/barn/Documents/myfile.txt", "UTF-8") //Don't have to include encoding type
-      val tokens = source.mkString.split("\\s+") //Split the text file at each space OR many spaces.
-
-      //Following line of code is found on page 44 of Scala for Impatient. Interoperating with Java. Using TreeMap which scala doesn't provide
-      val freq: scala.collection.mutable.Map[String, Int] = new java.util.TreeMap[String, Int]
-    //    for each token (each word) map the word to its frequency
-         tokens foreach { token =>
-            freq(token) = freq.getOrElse(token, 0) + 1
-         }
-      println(freq)
-  }
+//  def readFileScalaIO = {
+//      val source = Source.fromFile("/home/barn/Documents/myfile.txt", "UTF-8") //Don't have to include encoding type
+//      val tokens = source.mkString.split("\\s+") //Split the text file at each space OR many spaces.
+//
+//      //Following line of code is found on page 44 of Scala for Impatient. Interoperating with Java. Using TreeMap which scala doesn't provide
+//      val freq: scala.collection.mutable.Map[String, Int] = new java.util.TreeMap[String, Int]
+//    //    for each token (each word) map the word to its frequency
+//         tokens foreach { token =>
+//            freq(token) = freq.getOrElse(token, 0) + 1
+//         }
+//      println(freq)
+//  }
 
   /**
    * 2 - Read words from a file, Use mutable map to count how often each word appears
@@ -53,28 +49,28 @@ object Chapter4_Maps_Tuples extends App {
 }
 
 //  3 - Same as above but make the list immutable
-  def readFileScalaIOImmutable = {
-    val source = Source.fromFile("/home/barn/Documents/myfile.txt", "UTF-8") //Don't have to include encoding type
-    val tokens = source.mkString.split("\\s+") //Split the text file at each space OR many spaces.
-
-    //Following line of code is found on page 44 of Scala for Impatient. Interoperating with Java. Using TreeMap which scala doesn't provide
-    var freq = new scala.collection.immutable.HashMap[String, Int]
-    //    for each token (each word) map the word to its frequency
-    tokens foreach { token =>
-      freq = freq + (token -> (freq.getOrElse(token, 0) + 1) )
-    }
-    println(freq)
-  }
+//  def readFileScalaIOImmutable = {
+//    val source = Source.fromFile("/home/barn/Documents/myfile.txt", "UTF-8") //Don't have to include encoding type
+//    val tokens = source.mkString.split("\\s+") //Split the text file at each space OR many spaces.
+//
+//    //Following line of code is found on page 44 of Scala for Impatient. Interoperating with Java. Using TreeMap which scala doesn't provide
+//    var freq = new scala.collection.immutable.HashMap[String, Int]
+//    //    for each token (each word) map the word to its frequency
+//    tokens foreach { token =>
+//      freq = freq + (token -> (freq.getOrElse(token, 0) + 1) )
+//    }
+//    println(freq)
+//  }
 
 //  4 - Print sorted list
-    val in = new java.util.Scanner(new java.io.File("/home/barn/Documents/myfile.txt"))
-    var wordCounts = collection.immutable.SortedMap[String, Int]() withDefault (_ => 0)
-      while (in hasNext) {
-    val key = in next
-    val currentCount = wordCounts(key) //initially be 0. Increments each time another word is found
-    wordCounts = wordCounts - key + (key -> (currentCount + 1))
-  }
-  println("Sorted: " + wordCounts)
+//    val in = new java.util.Scanner(new java.io.File("/home/barn/Documents/myfile.txt"))
+//    var wordCounts = collection.immutable.SortedMap[String, Int]() withDefault (_ => 0)
+//      while (in hasNext) {
+//    val key = in next
+//    val currentCount = wordCounts(key) //initially be 0. Increments each time another word is found
+//    wordCounts = wordCounts - key + (key -> (currentCount + 1))
+////  }
+//  println("Sorted: " + wordCounts)
 
   /**
    * 6 - Linked Hash Map
