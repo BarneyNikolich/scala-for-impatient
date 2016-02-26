@@ -4,7 +4,7 @@
 		module="scala_for_impatient-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20151110102736"
+		publication="20160226101253"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>

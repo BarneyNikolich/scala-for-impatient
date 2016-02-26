@@ -36,13 +36,39 @@ object Chapter12_Higher_order_functions extends App {
   /**
    * 6
    */
-  def largestResultInput(fun: (Int) => Int, inputs: Seq[Int]) = inputs.map(x => (x, fun(x))).reduceLeft((x, y) => if(x._2 > y._2) x else y)._1
+  def largestResultInput(fun: (Int) => Int, inputs: Seq[Int]) =
+    inputs.map(x => (x, fun(x))).reduceLeft((x, y) => if(x._2 > y._2) x else y)._1
+
   println(largestResultInput(x => 10 * x - x * x, 1 to 10))
+
+  def largestResultIndex(fun: (Int) => Int, inputs: Seq[Int]) =
+   inputs.zipWithIndex.map(x => (x._1, fun(x._1), x._2)).reduceLeft((x, y) => if(x._2 > y._2) x else y)
+
+  println("25:  " + largestResultIndex(x => 10 * x - x * x, 1 to 10))
+
 
   /**
    * 7
    */
-  def adjustToPair(fun: (Int, Int => Int))(a: Int, b: Int) = fun(a, b)
+  def adjustToPair(fun: (Int, Int) => Int) = (x: (Int, Int)) => fun(x._1, x._2)
+  println(adjustToPair(_ * _)(8,7))
+
+  /**
+   * 8
+   */
+  val xy = List("Hello", "Barney", "what")
+  val yx = List(5, 6, 4)
+
+  val corr = xy.corresponds(yx)((x, y) => x.length == y)
+
+  /**
+   * 9
+   */
+  def corresponds2[A, B](lis1: List[A], lis2: List[B], function: (A, B) => Boolean) =
+//    lis1.zip(lis2).map(x => function(x._1, x._2))
+      lis1.zip(lis2).forall(x => function(x._1, x._2))
+
+  println(corresponds2(xy, yx, (x: String, y: Int) => x.length == y))
 
 
 }

@@ -2290,7 +2290,7 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.8!apply-macro.jar
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.4!jline.jar
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar
-[debug] :: resolution report :: resolve 6640ms :: artifacts dl 78ms
+[debug] :: resolution report :: resolve 2078ms :: artifacts dl 27ms
 [debug] 	report for default#scala_for_impatient-build;0.1-SNAPSHOT compile produced in /home/barn/Documents/ScalaReference/ScalaProjects/scala_for_impatient/project/target/resolution-cache/reports/default-scala_for_impatient-build-compile.xml
 [debug] 	report for default#scala_for_impatient-build;0.1-SNAPSHOT runtime produced in /home/barn/Documents/ScalaReference/ScalaProjects/scala_for_impatient/project/target/resolution-cache/reports/default-scala_for_impatient-build-runtime.xml
 [debug] 	report for default#scala_for_impatient-build;0.1-SNAPSHOT test produced in /home/barn/Documents/ScalaReference/ScalaProjects/scala_for_impatient/project/target/resolution-cache/reports/default-scala_for_impatient-build-test.xml
@@ -2304,5 +2304,5 @@
 [debug] 	report for default#scala_for_impatient-build;0.1-SNAPSHOT docs produced in /home/barn/Documents/ScalaReference/ScalaProjects/scala_for_impatient/project/target/resolution-cache/reports/default-scala_for_impatient-build-docs.xml
 [debug] 	report for default#scala_for_impatient-build;0.1-SNAPSHOT pom produced in /home/barn/Documents/ScalaReference/ScalaProjects/scala_for_impatient/project/target/resolution-cache/reports/default-scala_for_impatient-build-pom.xml
 [debug] 	report for default#scala_for_impatient-build;0.1-SNAPSHOT scala-tool produced in /home/barn/Documents/ScalaReference/ScalaProjects/scala_for_impatient/project/target/resolution-cache/reports/default-scala_for_impatient-build-scala-tool.xml
-[debug] 	resolve done (6640ms resolve - 78ms download)
+[debug] 	resolve done (2078ms resolve - 27ms download)
 [info] Done updating.
