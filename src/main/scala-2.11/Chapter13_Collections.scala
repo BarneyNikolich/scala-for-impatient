@@ -32,35 +32,32 @@ object Chapter13_Collections extends App {
    * 3 - Function to remove all zeros from a list of Integers
    */
   val listy = List(1, 3, 4, 5, 7, 0, 0, 0, 0, 0, 4, 2, 0)
-
+//Example using recursion to remove all 0s.
   def removeZeros(x: List[Int]): List[Int] = x match {
     case Nil => Nil
-    case h :: t => if(h != 0) h :: removeZeros(t) else removeZeros(t)
+    case h :: t => if(h != 0) h :: removeZeros(t) else removeZeros(t)   //h :: t - (h=head t=tail) create list with tail ELSE just pass the tail in. Forget about current element.
   }
+//Example of using foldLeft to remove 0s from the List. Initialise an empty List for foldLeft to use.
+  def filterZero(x: List[Int]) = x.foldLeft(List[Int]())((returnList, currentElem) =>
+      if(currentElem != 0)  returnList :+ currentElem else returnList)
 
-  def filterZero(x: List[Int]) = x.foldLeft(1)((x:Int, y: Int) => if(x == 0) y else x )
-
-//  println(removeZeros(listy))
+//  println(filterZero(listy))
 
 
   val r = List(1 , 2, 3, 4, 5, 6, 7, 8)
 
-  def reverseList(x: List[Int]): List[Int] = {
-    x match {
-      case Nil => Nil
-      case h :: t => reverseList(t) ++ List(h)
-    }
+  /**
+   * EXAMPLE OF REVERSING A LIST USING RECURSION
+   */
+  def reverseList(x: List[Int]): List[Int] = x match {
+    case Nil => Nil
+    case h :: t => println(reverseList(t)); reverseList(t) ++ List(h)
   }
 
-//  val reversed = r.fold(List[Int])((h, t)=> t :: h)
-
-  def reverseListFold(l: List[Int]) = l.foldLeft(List[Int]())((l, e) =>  {
-    println("l: " + l)
-    println("e: " + e)
-    println(e :: l)
-    println()
-    e :: l
-  })
+  /**
+   * REVERSING A LIST USING FOLD LEFT!
+   */
+  def reverseListFold(l: List[Int]) = l.foldLeft(List[Int]())((l, e) => e :: l)
 
 //  println(reverseListFold(r))
 
@@ -71,6 +68,10 @@ object Chapter13_Collections extends App {
   val l = List(
     Person("Tom", 3), Person("Sally", 30), Person("Tony", 22), Person("Arthur", 1), Person("Gemma", 17)
   )
+
+  /**
+
+  Example of Insertion Sort in Scala.
 
   def top(l: List[Person]): List[Person] = l match {
     case List()   => List()
@@ -96,6 +97,35 @@ object Chapter13_Collections extends App {
   }
 
   println(top(l))
+**/
+
+
+  /**
+   * Example of a MergeSort. Don't understand
+   */
+  def mergeSort(ls: List[Person]): List[Person] = {
+    val split = ls.length / 2
+    if(split == 0) ls
+    else {
+      def merge(l: List[Person], r: List[Person], acc: List[Person] = List()): List[Person] = (l, r) match {
+        case (Nil, _) => acc ++ r
+        case (_, Nil) => acc ++ l
+        case (ls :: ls1, rs :: rs1) =>
+          if (ls.age < rs.age) merge(ls1, r, acc :+ ls)
+          else merge(l, rs1, acc :+ rs)
+      }
+      val (l, r) = ls splitAt split
+      merge(mergeSort(l), mergeSort(r))
+    }
+  }
+
+  /**
+   * 4
+   */
+  def four(ls: List[String], mp: Map[String, Int]) = ls.flatMap(mp.get(_))
+  val a = List("Tom", "Fred", "Harry")
+  val b = Map("Tom" -> 3, "Dick" -> 4, "Harry" -> 5)
+  println(a.map(b.get(_)))
 
 
 }
